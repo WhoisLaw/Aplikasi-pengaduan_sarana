@@ -1,0 +1,239 @@
+/* Modern Design System for Pengaduan Sarana Sekolah */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --secondary: #64748b;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    --bg-main: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --premium-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-main);
+    color: #1e293b;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--premium-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 30px -5px rgba(99, 102, 241, 0.1);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.nav-vibrant {
+    background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%) !important;
+    border-bottom: none !important;
+}
+
+.nav-vibrant .navbar-brand,
+.nav-vibrant .nav-link,
+.nav-vibrant .bi,
+.nav-vibrant .text-dark {
+    color: white !important;
+}
+
+.nav-vibrant .bg-primary.bg-opacity-10 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.student-sky {
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent),
+        radial-gradient(circle at top left, rgba(168, 85, 247, 0.08), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.admin-sky {
+    background: radial-gradient(circle at top right, rgba(30, 41, 59, 0.08), transparent),
+        radial-gradient(circle at top left, rgba(99, 102, 241, 0.05), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.nav-admin-vibrant {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+    border-bottom: none !important;
+}
+
+.nav-admin-vibrant .navbar-brand,
+.nav-admin-vibrant .nav-link,
+.nav-admin-vibrant .bi {
+    color: white !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Buttons */
+.btn-premium {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    color: white;
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Status Badges */
+.badge-premium {
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bg-baru {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.bg-diproses {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.bg-selesai {
+    background: #d1fae5;
+    color: #059669;
+}
+
+/* Dashboard Cards */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 100px;
+    height: 100px;
+    background: currentColor;
+    opacity: 0.05;
+    border-radius: 50%;
+}
+
+/* Custom Table */
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.custom-table thead th {
+    border: none;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+}
+
+.custom-table tbody tr {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.custom-table tbody td {
+    border: none;
+    padding: 20px;
+}
+
+.custom-table tbody td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.custom-table tbody td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
