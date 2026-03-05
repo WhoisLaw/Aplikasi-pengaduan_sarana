@@ -1,9 +1,6 @@
 {
     "functions": {
-        "api/**/*.php": {
-            "runtime": "vercel-php@0.7.1"
-        },
-        "*.php": {
+        "index.php": {
             "runtime": "vercel-php@0.7.1"
         }
     },
@@ -11,6 +8,14 @@
         {
             "src": "/assets/(.*)",
             "dest": "/assets/$1"
+        },
+        {
+            "src": "/(login|register|logout|siswa_dashboard|siswa_lapor|admin_dashboard|admin_list|admin_users)",
+            "dest": "/index.php?page=$1"
+        },
+        {
+            "src": "/(siswa_detail|admin_detail)/([0-9]+)",
+            "dest": "/index.php?page=$1&id=$2"
         },
         {
             "src": "/(.*)",

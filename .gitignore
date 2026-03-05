@@ -1,0 +1,20 @@
+# Visual Studio Code items
+.vscode/
+
+# Local Environment
+.env
+.env.local
+
+# XAMPP / Local Server artifacts
+error_log
+php_errors.log
+
+# Uploads (Exclude actual files, keep directory structure)
+assets/uploads/aspirasi/*
+assets/uploads/feedback/*
+!assets/uploads/aspirasi/.gitkeep
+!assets/uploads/feedback/.gitkeep
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 -- Database schema for School Complaint Application
-CREATE DATABASE IF NOT EXISTS db_pengaduan_sekolah;
-USE db_pengaduan_sekolah;
+-- CREATE DATABASE IF NOT EXISTS db_pengaduan_sekolah;
+-- USE db_pengaduan_sekolah;
 
 -- 1. Tabel users
 CREATE TABLE IF NOT EXISTS users (
@@ -29,12 +29,10 @@ CREATE TABLE IF NOT EXISTS aspirasi (
     status ENUM('baru','diproses','selesai') DEFAULT 'baru',
     foto VARCHAR(255) NULL,
     FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
-    FOREIGN KEY (id_kategori) REFERENCES kategori(id_kategori)
+    FOREIGN KEY (id_kategori) REFERENCES kategori(id_kategori),
+    INDEX idx_status (status),
+    INDEX idx_tanggal (tanggal)
 );
-
--- Indexing
-CREATE INDEX idx_status ON aspirasi(status);
-CREATE INDEX idx_tanggal ON aspirasi(tanggal);
 
 -- 4. Tabel feedback
 CREATE TABLE IF NOT EXISTS feedback (
@@ -47,11 +45,11 @@ CREATE TABLE IF NOT EXISTS feedback (
 );
 
 -- Seed Initial Data
-INSERT INTO users (nama, username, password, role) VALUES 
+INSERT IGNORE INTO users (nama, username, password, role) VALUES 
 ('Administrator', 'admin', MD5('admin123'), 'admin'),
 ('Siswa Contoh', 'siswa', MD5('siswa123'), 'siswa');
 
-INSERT INTO kategori (nama_kategori) VALUES 
+INSERT IGNORE INTO kategori (nama_kategori) VALUES 
 ('Kebersihan'), 
 ('Fasilitas Kelas'), 
 ('Keamanan'), 
