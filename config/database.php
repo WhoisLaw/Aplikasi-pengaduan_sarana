@@ -16,7 +16,7 @@ class Database
             $this->port = $url['port'] ?? "3306";
             $this->user = $url['user'] ?? "root";
             $this->pass = $url['pass'] ?? "";
-            $this->db = ltrim($url['path'] ?? "/db_pengaduan_sekolah", '/');
+            $this->db = ltrim($url['path'] ?? "", '/') ?: "db_pengaduan_sekolah";
         }
         else {
             $this->host = getenv('DB_HOST') ?: "localhost";
