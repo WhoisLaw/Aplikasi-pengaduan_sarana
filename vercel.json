@@ -10,11 +10,11 @@
             "dest": "/assets/$1"
         },
         {
-            "src": "/(login|register|logout|siswa_dashboard|siswa_lapor|admin_dashboard|admin_list|admin_users)",
+            "src": "/(login|register|logout|siswa_dashboard|siswa_submit|siswa_lapor|siswa_hapus|admin_dashboard|admin_list|admin_update_status|admin_add_feedback|admin_users|admin_user_add|admin_user_store|admin_user_update|admin_user_delete)",
             "dest": "/index.php?page=$1"
         },
         {
-            "src": "/(siswa_detail|admin_detail)/([0-9]+)",
+            "src": "/(siswa_detail|admin_detail|admin_user_edit)/([0-9]+)",
             "dest": "/index.php?page=$1&id=$2"
         },
         {

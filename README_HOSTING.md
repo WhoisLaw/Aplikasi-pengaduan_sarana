@@ -14,16 +14,15 @@ This project is prepared for deployment using **Vercel** (Frontend/Backend) and 
 
 ## 2. Vercel Deployment
 
-1.  Push your code to a GitHub/GitLab repository.
-2.  Import the repository into **Vercel**.
-3.  In the **Environment Variables** section, add the following:
-    *   `DB_HOST`: (Your Aiven host)
-    *   `DB_NAME`: (Your database name, e.g., `defaultdb`)
-    *   `DB_USER`: (Your Aiven user, usually `avnadmin`)
-    *   `DB_PASS`: (Your Aiven password)
-    *   `DB_PORT`: (Your Aiven port, usually `11130`)
-    *   `DB_SSL`: `true`
-4.  Deploy.
+17. Push your code to a GitHub/GitLab repository.
+18. Import the repository into **Vercel**.
+19. In the **Environment Variables** section, you have two options:
+    *   **Option A (Recommended)**: Add `DATABASE_URL` with your Aiven Service URI.
+    *   **Option B**: Add individual variables (`DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`).
+20. For SSL (required by Aiven):
+    *   Add `DB_SSL`: `true`.
+    *   (Optional) If Aiven requires a specific certificate, add it as `DB_SSL_CA` (paste the content of the `.pem` file). The application will automatically handle it.
+21. Deploy.
 
 ## 3. Important Notes
 
