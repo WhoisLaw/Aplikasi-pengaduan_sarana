@@ -1,6 +1,9 @@
 {
     "functions": {
-        "index.php": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.1"
+        },
+        "api/health.php": {
             "runtime": "vercel-php@0.7.1"
         }
     },
@@ -11,19 +14,19 @@
         },
         {
             "src": "/health",
-            "dest": "/health.php"
+            "dest": "/api/health.php"
         },
         {
             "src": "/(login|register|logout|siswa_dashboard|siswa_submit|siswa_lapor|siswa_hapus|admin_dashboard|admin_list|admin_update_status|admin_add_feedback|admin_users|admin_user_add|admin_user_store|admin_user_update|admin_user_delete)",
-            "dest": "/index.php?page=$1"
+            "dest": "/api/index.php?page=$1"
         },
         {
             "src": "/(siswa_detail|admin_detail|admin_user_edit)/([0-9]+)",
-            "dest": "/index.php?page=$1&id=$2"
+            "dest": "/api/index.php?page=$1&id=$2"
         },
         {
             "src": "/(.*)",
-            "dest": "/index.php"
+            "dest": "/api/index.php"
         }
     ]
 }
