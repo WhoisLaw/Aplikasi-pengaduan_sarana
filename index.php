@@ -140,4 +140,3 @@ switch ($page) {
         header("Location: index.php?page=login");
         break;
 }
-?>
