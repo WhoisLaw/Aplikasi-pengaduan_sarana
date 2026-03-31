@@ -171,7 +171,7 @@ class AdminController
     public function deleteUser($id)
     {
         // Don't allow self-deletion
-        if ($id == $_SESSION['user_id']) {
+        if ($id == $_SESSION['id_user']) {
             header("Location: index.php?page=admin_users&error=self_delete");
             exit();
         }

@@ -136,7 +136,7 @@ else: ?>
                                         <a href="index.php?page=admin_user_edit&id=<?php echo $u['id_user']; ?>" class="btn btn-sm btn-light rounded-pill px-3 fw-semibold">
                                             <i class="bi bi-pencil-square me-1"></i>Edit
                                         </a>
-                                        <?php if ($u['id_user'] != $_SESSION['user_id']): ?>
+                                        <?php if ($u['id_user'] != $_SESSION['id_user']): ?>
                                             <a href="index.php?page=admin_user_delete&id=<?php echo $u['id_user']; ?>" class="btn btn-sm btn-outline-danger rounded-pill px-3 fw-semibold" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                                 <i class="bi bi-trash me-1"></i>Hapus
                                             </a>
