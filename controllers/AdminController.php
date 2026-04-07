@@ -51,7 +51,7 @@ class AdminController
     {
         // Simple internal fetch or add to model
         $db = (new Database())->connect();
-        $stmt = $db->query("SELECT * FROM kategori ORDER BY nama_kategori ASC");
+        $stmt = $db->query("SELECT MIN(id_kategori) as id_kategori, nama_kategori FROM kategori GROUP BY nama_kategori ORDER BY nama_kategori ASC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
