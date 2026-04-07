@@ -42,28 +42,30 @@ require 'views/layouts/header.php'; ?>
         </div>
         <form action="index.php" method="GET" class="row g-3">
             <input type="hidden" name="page" value="admin_list">
-            <div class="col-md-2">
+            
+            <div class="col-md-4 col-lg-3">
                 <label class="form-label fw-bold small text-secondary">STATUS</label>
                 <select name="status" class="form-select bg-light border-0 py-2 rounded-3">
-                    <option value="">Semua</option>
+                    <option value="">Semua Status</option>
                     <option value="baru" <?php echo($filters['status'] == 'baru') ? 'selected' : ''; ?>>Baru</option>
                     <option value="diproses" <?php echo($filters['status'] == 'diproses') ? 'selected' : ''; ?>>Diproses</option>
                     <option value="selesai" <?php echo($filters['status'] == 'selesai') ? 'selected' : ''; ?>>Selesai</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            
+            <div class="col-md-4 col-lg-3">
                 <label class="form-label fw-bold small text-secondary">KATEGORI</label>
                 <select name="kategori" class="form-select bg-light border-0 py-2 rounded-3">
-                    <option value="">Semua</option>
+                    <option value="">Semua Kategori</option>
                     <?php foreach ($kategori as $k): ?>
                         <option value="<?php echo $k['id_kategori']; ?>" <?php echo($filters['kategori'] == $k['id_kategori']) ? 'selected' : ''; ?>>
                             <?php echo e($k['nama_kategori']); ?>
                         </option>
-                    <?php
-endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-md-2">
+            
+            <div class="col-md-4 col-lg-3">
                 <label class="form-label fw-bold small text-secondary">SISWA</label>
                 <select name="id_user" class="form-select bg-light border-0 py-2 rounded-3">
                     <option value="">Semua Siswa</option>
@@ -71,34 +73,35 @@ endforeach; ?>
                         <option value="<?php echo $s['id_user']; ?>" <?php echo($filters['id_user'] == $s['id_user']) ? 'selected' : ''; ?>>
                             <?php echo e($s['nama']); ?>
                         </option>
-                    <?php
-endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-md-2">
+            
+            <div class="col-md-4 col-lg-3">
                 <label class="form-label fw-bold small text-secondary">BULAN</label>
                 <select name="bulan" class="form-select bg-light border-0 py-2 rounded-3">
                     <option value="">Semua Bulan</option>
                     <?php
-$months = [
-    1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
-    5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
-    9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
-];
-foreach ($months as $num => $name): ?>
+                    $months = [
+                        1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+                        5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+                        9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+                    ];
+                    foreach ($months as $num => $name): ?>
                         <option value="<?php echo $num; ?>" <?php echo($filters['bulan'] == $num) ? 'selected' : ''; ?>><?php echo $name; ?></option>
-                    <?php
-endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-md-2">
-                <label class="form-label fw-bold small text-secondary">TANGGAL</label>
+
+            <div class="col-md-4 col-lg-3">
+                <label class="form-label fw-bold small text-secondary">TANGGAL SPESIFIK</label>
                 <input type="date" name="tanggal" class="form-control bg-light border-0 py-2 rounded-3" value="<?php echo $filters['tanggal']; ?>">
             </div>
-            <div class="col-md-2 align-self-end d-flex gap-2">
-                <button type="submit" class="btn btn-premium flex-fill py-2 rounded-3">Filter</button>
-                <a href="index.php?page=admin_list" class="btn btn-light flex-fill py-2 rounded-3 fw-bold text-secondary">
-                    <i class="bi bi-arrow-counterclockwise"></i>
+            
+            <div class="col-md-4 col-lg-3 align-self-end d-flex gap-2">
+                <button type="submit" class="btn btn-premium flex-fill py-2 rounded-3"><i class="bi bi-funnel-fill me-1"></i> Terapkan</button>
+                <a href="index.php?page=admin_list" class="btn btn-light flex-fill py-2 rounded-3 fw-bold text-secondary" title="Reset Filter">
+                    <i class="bi bi-arrow-counterclockwise"></i> Reset
                 </a>
             </div>
         </form>
@@ -112,7 +115,7 @@ endforeach; ?>
                         <th>Tanggal</th>
                         <th>Siswa</th>
                         <th>Kategori</th>
-                        <th>Kategori Tempat</th>
+                        <th>Judul Laporan</th>
                         <th>Status</th>
                         <th class="text-end">Aksi</th>
                     </tr>
