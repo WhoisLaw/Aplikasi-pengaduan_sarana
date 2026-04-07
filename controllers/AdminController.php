@@ -83,12 +83,9 @@ class AdminController
                 $allowed = ['jpg', 'jpeg', 'png', 'gif'];
 
                 if (in_array(strtolower($ext), $allowed)) {
-                    $filename = time() . '_' . uniqid() . '.' . $ext;
-                    $target = 'assets/uploads/feedback/' . $filename;
-
-                    if (move_uploaded_file($_FILES['foto']['tmp_name'], $target)) {
-                        $foto = $filename;
-                    }
+                    $file_content = file_get_contents($_FILES['foto']['tmp_name']);
+                    $base64_image = base64_encode($file_content);
+                    $foto = 'data:image/' . strtolower($ext) . ';base64,' . $base64_image;
                 }
             }
 

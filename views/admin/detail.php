@@ -41,7 +41,11 @@ require 'views/layouts/header.php'; ?>
                         <div class="mt-4">
                             <label class="form-label fw-bold small text-secondary mb-3">LAMPIRAN FOTO</label>
                             <div class="position-relative overflow-hidden rounded-4 shadow-sm" style="max-width: 100%;">
-                                <img src="assets/uploads/aspirasi/<?php echo $detail['foto']; ?>" class="img-fluid" alt="Foto Aspirasi">
+                                <?php if (strpos($detail['foto'], 'data:image') === 0): ?>
+                                    <img src="<?php echo $detail['foto']; ?>" class="img-fluid" alt="Foto Aspirasi">
+                                <?php else: ?>
+                                    <img src="assets/uploads/aspirasi/<?php echo $detail['foto']; ?>" class="img-fluid" alt="Foto Aspirasi">
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php
@@ -68,7 +72,11 @@ else: ?>
                                 <p class="mb-0 text-dark leading-relaxed"><?php echo e($f['isi_feedback']); ?></p>
                                 <?php if ($f['foto']): ?>
                                     <div class="mt-3">
-                                        <img src="assets/uploads/feedback/<?php echo $f['foto']; ?>" class="img-fluid rounded-3 shadow-sm" style="max-height: 250px;" alt="Foto Feedback">
+                                        <?php if (strpos($f['foto'], 'data:image') === 0): ?>
+                                            <img src="<?php echo $f['foto']; ?>" class="img-fluid rounded-3 shadow-sm" style="max-height: 250px;" alt="Foto Feedback">
+                                        <?php else: ?>
+                                            <img src="assets/uploads/feedback/<?php echo $f['foto']; ?>" class="img-fluid rounded-3 shadow-sm" style="max-height: 250px;" alt="Foto Feedback">
+                                        <?php endif; ?>
                                     </div>
                                 <?php
         endif; ?>
