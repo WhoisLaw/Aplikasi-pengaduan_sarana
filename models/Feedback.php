@@ -12,8 +12,18 @@ class Feedback
     public function create($id_aspirasi, $isi_feedback, $foto = null)
     {
         $query = "INSERT INTO " . $this->table_name . " (id_aspirasi, isi_feedback, tanggal_feedback, foto) VALUES (?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
-        return $stmt->execute([$id_aspirasi, $isi_feedback, date('Y-m-d'), $foto]);
+        try {
+            $stmt = $this->conn->prepare($query);
+            return $stmt->execute([$id_aspirasi, $isi_feedback, date('Y-m-d'), $foto]);
+        } catch (PDOException $e) {
+            // Auto-heal if the database wasn't migrated to LONGTEXT
+            if (strpos($e->getMessage(), '1406') !== false || strpos($e->getMessage(), '22001') !== false) {
+                $this->conn->exec("ALTER TABLE " . $this->table_name . " MODIFY COLUMN foto LONGTEXT NULL");
+                $stmt = $this->conn->prepare($query);
+                return $stmt->execute([$id_aspirasi, $isi_feedback, date('Y-m-d'), $foto]);
+            }
+            throw $e;
+        }
     }
 
     public function getByAspirasi($id_aspirasi)
