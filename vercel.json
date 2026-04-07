@@ -17,7 +17,7 @@
             "dest": "/api/health.php"
         },
         {
-            "src": "/(login|register|logout|siswa_dashboard|siswa_submit|siswa_lapor|siswa_hapus|admin_dashboard|admin_list|admin_update_status|admin_add_feedback|admin_users|admin_user_add|admin_user_store|admin_user_update|admin_user_delete)",
+            "src": "/(login|register|logout|siswa_dashboard|siswa_submit|siswa_lapor|siswa_hapus|admin_dashboard|admin_list|admin_update_status|admin_add_feedback|admin_users|admin_user_add|admin_user_store|admin_user_update|admin_user_delete|migrate)",
             "dest": "/api/index.php?page=$1"
         },
         {

@@ -37,6 +37,11 @@ switch ($page) {
         $controller->logout();
         break;
 
+    // Database Migration Route
+    case 'migrate':
+        require 'migrate.php';
+        break;
+
     // Siswa Routes
     case 'siswa_dashboard':
         require_once 'controllers/SiswaController.php';
