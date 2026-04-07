@@ -31,7 +31,7 @@ function logout()
 {
     session_destroy();
     setcookie('auth_token', '', time() - 3600, '/');
-    header("Location: index.php?page=login");
+    header("Location: index.php?page=landing");
     exit();
 }
 
