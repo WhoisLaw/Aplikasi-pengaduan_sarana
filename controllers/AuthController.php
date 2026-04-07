@@ -30,6 +30,10 @@ class AuthController
                 $_SESSION['success'] = "Login Berhasil! Selamat datang, " . $user['nama'];
                 session_regenerate_id(true);
 
+                // Persistent Auth for Serverless
+                $signature = md5($user['id_user'] . $user['username'] . $user['password']);
+                setcookie('auth_token', $user['id_user'] . '|' . $signature, time() + (86400 * 30), '/');
+
                 if ($user['role'] === 'admin') {
                     header("Location: index.php?page=admin_dashboard");
                 }

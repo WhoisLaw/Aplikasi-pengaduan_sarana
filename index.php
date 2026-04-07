@@ -12,6 +12,9 @@ require_once 'helpers/auth.php';
 $database = new Database();
 $db = $database->connect();
 
+// Auto-restore session from cookie for serverless Vercel environment
+restoreSessionIfMissing($db);
+
 $page = $_GET['page'] ?? 'landing';
 
 switch ($page) {
