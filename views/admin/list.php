@@ -99,9 +99,9 @@ require 'views/layouts/header.php'; ?>
             </div>
             
             <div class="col-md-2 align-self-end d-flex gap-2">
-                <button type="submit" class="btn btn-premium flex-fill py-2 rounded-3"><i class="bi bi-funnel-fill me-1"></i> Terapkan</button>
-                <a href="index.php?page=admin_list" class="btn btn-light flex-fill py-2 rounded-3 fw-bold text-secondary" title="Reset Filter">
-                    <i class="bi bi-arrow-counterclockwise"></i> Reset
+                <button type="submit" class="btn btn-premium flex-fill py-2 rounded-3"><i class="bi bi-funnel-fill me-1"></i> Filter</button>
+                <a href="index.php?page=admin_list" class="btn btn-light py-2 px-3 rounded-3 fw-bold text-secondary flex-shrink-0" title="Reset Filter">
+                    <i class="bi bi-arrow-counterclockwise"></i>
                 </a>
             </div>
         </form>
